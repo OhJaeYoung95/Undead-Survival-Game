@@ -28,4 +28,9 @@ public class Player : MonoBehaviour
         Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
     }
+
+    void OnMove(InputValue value)
+    {
+        inputVec = value.Get<Vector2>();
+    }
 }
