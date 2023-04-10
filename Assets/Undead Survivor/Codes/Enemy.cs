@@ -64,15 +64,23 @@ public class Enemy : MonoBehaviour
 
         health -= collision.GetComponent<Bullet>().damage;
 
+
         if(health > 0)
         {
             // Live, Hit Action
+            anim.SetTrigger("Hit");
         }
         else
         {
             // Die
             Dead();
         }
+    }
+
+    IEnumerator KnockBack()
+    {
+
+        yield return null;
     }
 
     void Dead()
