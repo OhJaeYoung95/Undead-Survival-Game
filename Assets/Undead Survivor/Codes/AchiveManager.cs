@@ -32,7 +32,12 @@ public class AchiveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UnlockCharacter();
+    }
+
+    void UnlockCharacter()
+    {
+
     }
 
     // Update is called once per frame
