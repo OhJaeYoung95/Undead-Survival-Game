@@ -38,12 +38,6 @@ public class Weapon : MonoBehaviour
                 }
                 break;
         }
-
-        // Test code
-        if (Input.GetButtonDown("Jump"))
-        {
-            LevelUp(20, 5);
-        }
     }
 
     public void LevelUp(float damage, int count)
@@ -135,9 +129,12 @@ public class Weapon : MonoBehaviour
         Vector3 targetPos = player.scanner.nearestTarget.position;
         Vector3 dir = targetPos - transform.position;
         dir = dir.normalized;
+
         Transform bullet = GameManager.instance.pool.Get(prefabId).transform;
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().Init(damage, count, dir);
+
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Range);
     }
 }

@@ -38,11 +38,15 @@ public class GameManager : MonoBehaviour
         player.gameObject.SetActive(true);
         uiLevelUp.Select(playerId % 2);         // 임시 스크립트 (첫번째 캐릭터 선택)
         Resume();
+
+        AudioManager.instance.PlayBgm(true);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
     }
 
     public void GameOver()
     {
         StartCoroutine(GameOverRoutine());
+        //AudioManager.instance.PlaySfx(AudioManager.Sfx.Lose);
     }
 
     IEnumerator GameOverRoutine()
@@ -54,11 +58,15 @@ public class GameManager : MonoBehaviour
         uiResult.gameObject.SetActive(true);
         uiResult.Lose();
         Stop();
+
+        AudioManager.instance.PlayBgm(false);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Lose);
     }
 
     public void GameVictory()
     {
         StartCoroutine(GameVictoryRoutine());
+        //AudioManager.instance.PlaySfx(AudioManager.Sfx.Win);
     }
 
     IEnumerator GameVictoryRoutine()
@@ -71,6 +79,9 @@ public class GameManager : MonoBehaviour
         uiResult.gameObject.SetActive(true);
         uiResult.Win();
         Stop();
+
+        AudioManager.instance.PlayBgm(false);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Win);
     }
 
 
